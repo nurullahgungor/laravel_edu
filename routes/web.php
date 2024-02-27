@@ -20,7 +20,6 @@ Route::get('about', function(){
     return 'This is a about page';
 });
 
-Route::post('')
 
 /* ROUTE METHODS */
 
@@ -34,3 +33,24 @@ Route::post('')
  * ---------------------|
  * 5. DELETE
 */
+
+
+/** Route Parameters */
+
+Route::get('person/{id?}', function($id=null){
+    if($id === null){
+        return 'can not found any person data!';
+    }
+    return [
+        'id' => $id,
+        'name' => 'jhon doe'
+    ];
+});
+
+Route::get('person/{id}/post/{post_id}', function($id, $postId){
+    return [
+        'id' => $id,
+        'post' => $postId,
+        'name' => 'jhon doe'
+    ];
+});
