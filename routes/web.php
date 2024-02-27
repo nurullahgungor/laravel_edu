@@ -19,3 +19,18 @@ Route::get('/', function () {
 Route::get('about', function(){
     return 'This is a about page';
 });
+
+Route::post('')
+
+/* ROUTE METHODS */
+
+/** 
+ * 1. GET
+ * 2. POST
+ * ---------------------|
+ * |3. PUT              |
+ * |                         => basicaly same thing, but patch method using for limited edition to put method.
+ * |4. PATCH            |
+ * ---------------------|
+ * 5. DELETE
+*/
