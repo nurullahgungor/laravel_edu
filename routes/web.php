@@ -19,3 +19,38 @@ Route::get('/', function () {
 Route::get('about', function(){
     return 'This is a about page';
 });
+
+
+/* ROUTE METHODS */
+
+/** 
+ * 1. GET
+ * 2. POST
+ * ---------------------|
+ * |3. PUT              |
+ * |                         => basicaly same thing, but patch method using for limited edition to put method.
+ * |4. PATCH            |
+ * ---------------------|
+ * 5. DELETE
+*/
+
+
+/** Route Parameters */
+
+Route::get('person/{id?}', function($id=null){
+    if($id === null){
+        return 'can not found any person data!';
+    }
+    return [
+        'id' => $id,
+        'name' => 'jhon doe'
+    ];
+});
+
+Route::get('person/{id}/post/{post_id}', function($id, $postId){
+    return [
+        'id' => $id,
+        'post' => $postId,
+        'name' => 'jhon doe'
+    ];
+});
