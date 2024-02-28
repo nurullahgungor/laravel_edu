@@ -47,10 +47,28 @@ Route::get('person/{id?}', function($id=null){
     ];
 });
 
-Route::get('person/{id}/post/{post_id}', function($id, $postId){
+Route::get('person/{id?}/post/{post_id?}', function($id, $postId){
     return [
         'id' => $id,
         'post' => $postId,
         'name' => 'jhon doe'
     ];
+});
+
+/**Routin - All about naming, grouping and prefix */
+/**
+ Route::get('animals', function(){
+     return 'Dog and Cat';
+ })->name('animal_test'); 
+ */
+
+ 
+Route::group(['as' => 'animals.', 'prefix' => 'animals'], function(){
+    Route::get('/cat', function(){
+        return 'Woof!';
+    })->name('cat');
+
+    Route::get('/dog', function(){
+        return 'Hav!'; 
+    })->name('dog');
 });
