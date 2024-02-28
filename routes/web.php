@@ -20,10 +20,9 @@ Route::get('about', function(){
     return view('info.about');
 });
 
-
 /* ROUTE METHODS */
 
-/** 
+/**
  * 1. GET
  * 2. POST
  * ---------------------|
@@ -59,7 +58,7 @@ Route::get('person/{id?}/post/{post_id?}', function($id, $postId){
 /**
  Route::get('animals', function(){
      return 'Dog and Cat';
- })->name('animal_test'); 
+ })->name('animal_test');
  */
 
 
@@ -73,6 +72,16 @@ Route::group(['as' => 'animals.', 'prefix' => 'animals'], function(){
     })->name('cat');
 
     Route::get('/dog', function(){
-        return 'Hav!'; 
+        return 'Hav!';
     })->name('dog');
 });
+
+
+
+Route::get('contact', function () {
+    return view('contact');
+})->name('contact');
+
+Route::get('master-layout', function(){
+    return view('layouts.master');
+})->name('master');
