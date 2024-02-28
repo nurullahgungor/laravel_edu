@@ -62,8 +62,12 @@ Route::get('person/{id?}/post/{post_id?}', function($id, $postId){
  })->name('animal_test'); 
  */
 
- 
+
 Route::group(['as' => 'animals.', 'prefix' => 'animals'], function(){
+    Route::get('/', function(){
+        return 'animals!';
+    });
+
     Route::get('/cat', function(){
         return 'Woof!';
     })->name('cat');
