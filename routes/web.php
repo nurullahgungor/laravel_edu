@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 Route::get('about', function(){
     return view('info.about');
-});
+})->name('about');
 
 /* ROUTE METHODS */
 
