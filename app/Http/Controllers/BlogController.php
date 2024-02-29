@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -11,7 +12,20 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
+
+        // Bu modelin bütün datalarını, db'den çeker
+        // Collection üzerinden verileri return eder
+        /**
+         *  Collection nedir?
+         * Basit olarak, collection data grubudur, ya da veri mimarisinin basitleşmiş array hali denebilir.
+         * fakat bundan daha esnektir
+         */
+
+        $blog = Blog::all();
+        //$blog = Blog::find(1);
+        //$blog = Blog::first();
+
+        return $blog;
     }
 
     /**
