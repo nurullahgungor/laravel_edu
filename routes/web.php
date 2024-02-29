@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -76,11 +77,11 @@ Route::group(['as' => 'animals.', 'prefix' => 'animals'], function(){
     })->name('dog');
 });
 
-
-
-Route::get('contact', function () {
-    return view('contact');
-})->name('contact');
+/**
+ * contact için yazdığımız [] dizin parametresi içerisindeki, ilk değer çağırmak istediğimiz controller, ikinci parametre ise
+ * bu controller içerisinde çağırmak istediğimiz fonksiyonu işaretler ve çağırır.
+ */
+Route::get('contact',[TestController::class, 'contact'])->name('contact');
 
 Route::get('master-layout', function(){
     return view('layouts.master');

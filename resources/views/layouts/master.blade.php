@@ -5,7 +5,7 @@
         <nav>
             <ul>
                 <li><a href="{{ route('contact') }}">Contact</a></li>
-                <li><a href="{{ route('about') }}">Contact</a></li>
+                <li><a href="{{ route('about') }}">about</a></li>
             </ul>
         </nav>
 
