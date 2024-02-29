@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
@@ -86,3 +87,7 @@ Route::get('contact',[TestController::class, 'contact'])->name('contact');
 Route::get('master-layout', function(){
     return view('layouts.master');
 })->name('master');
+
+
+
+Route::resource('blog', BlogController::class);
