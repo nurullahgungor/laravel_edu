@@ -66,12 +66,16 @@ class BlogController extends Controller
         //dd($blog);
 
         // birebir ilişki ile dbden veri çekmek
-        $blogs = Blog::with('category')->get();
-        //echo $blogs;
-        foreach( $blogs as $blog ){
-            echo $blog -> title .' ->'. $blog ->category->name;
-            echo '</br>';
-        }
+        /**
+          * $blogs = Blog::with('category')->get();
+          * //echo $blogs;
+          * foreach( $blogs as $blog ){
+          *     echo $blog -> title .' ->'. $blog ->category->name;
+          *     echo '</br>';
+          * }
+         */
+
+
 
 
 
