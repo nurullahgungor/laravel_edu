@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -26,14 +27,14 @@ class BlogController extends Controller
         //$blog = Blog::first();
 
 
-        /** Create Data
-         * oluşturulan migrate dosyası üzerinden veriyi çekmek ve yeni data oluşturmak
-         * $blog = new Blog();
-         * $blog->title = 'this is a new title!';
-         * $blog->body  = 'this is a new body!';
-         * $blog->status  = 1;
-         * $blog->save();
-         */
+        // Create Data
+        //oluşturulan migrate dosyası üzerinden veriyi çekmek ve yeni data oluşturmak
+        //$blog = new Blog();
+        //$blog->title = 'this is a new title!';
+        //$blog->body  = 'this is a new body!';
+        //$blog->status  = 1;
+        //$blog->save();
+
 
         // Update Data
         /**
@@ -50,18 +51,28 @@ class BlogController extends Controller
         /**
 
          * $blog = Blog::where('status', '=', 1)->get();
-         * $blog = Blog::where(['status' => 0, 'id' => 2]) -> get();
          * // or
          * // iki farklı where koşulunu, chain operatoru ile birbirine bağlayarak da veri çekilebilir.
          * $blog = Blog::where(['status', '=', 1]) -> where('id', 2) ->get();
+         * $blog = Blog::where(['status' => 1, 'id' => 2]) -> get();
 
          */
         //Delete Data
         /**
          * $blog = Blog::findorFail(2);
          * $blog->delete();
-         * dd($blog);
          */
+        //$blog = Blog::all();
+        //dd($blog);
+
+        // birebir ilişki ile dbden veri çekmek
+        $blogs = Blog::with('category')->get();
+        //echo $blogs;
+        foreach( $blogs as $blog ){
+            echo $blog -> title .' ->'. $blog ->category->name;
+            echo '</br>';
+        }
+
 
 
 
