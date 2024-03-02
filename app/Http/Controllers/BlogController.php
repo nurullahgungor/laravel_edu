@@ -21,11 +21,50 @@ class BlogController extends Controller
          * fakat bundan daha esnektir
          */
 
-        $blog = Blog::all();
+        //$blog = Blog::all();
         //$blog = Blog::find(1);
         //$blog = Blog::first();
 
-        return $blog;
+
+        /** Create Data
+         * oluşturulan migrate dosyası üzerinden veriyi çekmek ve yeni data oluşturmak
+         * $blog = new Blog();
+         * $blog->title = 'this is a new title!';
+         * $blog->body  = 'this is a new body!';
+         * $blog->status  = 1;
+         * $blog->save();
+         */
+
+        // Update Data
+        /**
+         *$blog = Blog::find('2');
+         *$blog->title = 'this is a updated title!';
+         *$blog->body  = 'this is a updated body!';
+         *$blog->status  = 1;
+         *$blog->save();
+
+         */
+
+
+        // get datas
+        /**
+
+         * $blog = Blog::where('status', '=', 1)->get();
+         * $blog = Blog::where(['status' => 0, 'id' => 2]) -> get();
+         * // or
+         * // iki farklı where koşulunu, chain operatoru ile birbirine bağlayarak da veri çekilebilir.
+         * $blog = Blog::where(['status', '=', 1]) -> where('id', 2) ->get();
+
+         */
+        //Delete Data
+        /**
+         * $blog = Blog::findorFail(2);
+         * $blog->delete();
+         * dd($blog);
+         */
+
+
+
     }
 
     /**
