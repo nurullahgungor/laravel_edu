@@ -33,6 +33,12 @@ return new class extends Migration
     {
         Schema::create('blogs', function (Blueprint $table) {
             $table->id();
+            /**
+             * Constrained olarak işaret edilen tablonun migration dosyası,
+             * bu migration sayfasından daha önce migrate edilmesi gerekli bu yüzden dosyaların isimlerini değişterek,
+             * constrained dosyayı daha yukarıya taşıyoruz.
+             */
+            $table->foreignId('category_id')->constrained('categories');
             $table->string('title');
             $table->string('body');
             $table->boolean('status');
