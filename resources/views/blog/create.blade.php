@@ -3,23 +3,35 @@
 @section('content')
     <div class="container">
         <div class="card mt-5">
-
+            <div class="card-header">
+                <h3>Create Blog</h3>
+            </div>
             <div class="card-body">
                 <form>
                     <div class="mb-3">
                       <label for="" class="form-label">Category</label>
-                      <select name="" id="" class="form-control">
-                        <option>Tech</option>
-                      </select>
+                      <select name="category" id="" class="form-control">
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->name }}"> {{ $category->name }} </option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="mb-3">
                       <label for="" class="form-label">Title</label>
-                      <input type="text" class="form-control" id="">
+                      <input type="text" class="form-control" id="" name="title">
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Body</label>
-                        <textarea name="" id="" rows="10" class="form-control"></textarea>
+                        <textarea id="" rows="10" class="form-control" name="body"></textarea>
                     </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Status</label>
+                        <select name="status" id="" class="form-control">
+                          <option value="1">Show</option>
+                          <option value="0">Hide</option>
+
+                        </select>
+                      </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

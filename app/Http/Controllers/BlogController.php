@@ -88,7 +88,13 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('blog.create');
+        $categories = Category::all();
+        /**
+         * compact() methodu ile, değişkenlerin isimlerini, karşıya yollayabiliriz
+         * dikkat edilmesi gereken, compact kullanırken, değişkenlerin başına $ işareti konulmaz.
+         */
+
+        return view('blog.create', compact('categories'));
     }
 
     /**
