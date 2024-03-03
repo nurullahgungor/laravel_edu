@@ -76,7 +76,8 @@ class BlogController extends Controller
          */
 
 
-
+        $category = Category::find(1);
+        return $category->blogs;
 
 
 
