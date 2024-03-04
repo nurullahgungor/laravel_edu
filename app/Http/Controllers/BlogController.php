@@ -112,7 +112,16 @@ class BlogController extends Controller
 
         ]);
 
-        dd('form submitted!');
+        // Store Data
+        $blog = new Blog();
+        $blog->category_id = $request-> category;
+        $blog->title = $request-> title;
+        $blog->body = $request-> body;
+        $blog->status = $request-> status;
+        $blog->save();
+
+        session()->flash('success', 'Your Blog hasbeen created successfully!');
+        return redirect()->back();
     }
 
     /**
