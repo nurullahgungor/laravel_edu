@@ -13,7 +13,7 @@
                     </div>
                 @endif
 
-                <form action="{{ route('blog.store') }}" method="POST">
+                <form action="{{ route('blog.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="" class="form-label">Category</label>
@@ -23,6 +23,11 @@
                                 <option value="{{ $category->id }}"> {{ $category->name }} </option>
                             @endforeach
                         </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Image</label>
+                        <input type="file" name="image" class="form-control">
+
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Title</label>
