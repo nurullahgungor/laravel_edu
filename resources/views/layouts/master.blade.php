@@ -1,21 +1,16 @@
 <!DOCTYPE html>
 <html>
-    <head></head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+        <title>Document</title>
+    </head>
     </body>
-        <nav>
-            <ul>
-                <li><a href="{{ route('contact') }}">Contact</a></li>
-                <li><a href="{{ route('about') }}">about</a></li>
-            </ul>
-        </nav>
 
-        <div>
-            @yield('content')
-        </div>
+        @yield('content')
 
 
-        <footer>
-            <h2>Footer</h2>
-        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>
