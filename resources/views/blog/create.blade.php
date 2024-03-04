@@ -7,12 +7,18 @@
                 <h3>Create Blog</h3>
             </div>
             <div class="card-body">
+                @if ($errors -> any())
+                    @foreach ($errors->all() as $error )
+                        <div class="alert alert-danger" role="alert">
+                            {{ $error }}
+                        </div>
+                    @endforeach
+                @endif
                 @if (session()->has('success'))
                     <div class="alert alert-success " role="alert">
                         {{ session('success') }}
                     </div>
                 @endif
-
                 <form action="{{ route('blog.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
@@ -44,13 +50,7 @@
                             <option value="0">Hide</option>
                         </select>
                     </div>
-                    @if ($errors -> any())
-                        @foreach ($errors->all() as $error )
-                            <div class="alert alert-danger" role="alert">
-                                {{ $error }}
-                            </div>
-                        @endforeach
-                    @endif
+
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
