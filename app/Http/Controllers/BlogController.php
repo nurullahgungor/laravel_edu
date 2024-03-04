@@ -88,6 +88,7 @@ class BlogController extends Controller
      */
     public function create()
     {
+
         $categories = Category::all();
         /**
          * compact() methodu ile, değişkenlerin isimlerini, karşıya yollayabiliriz
@@ -102,7 +103,16 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+
+            'category'=> 'required | integer',
+            'title' => 'required | max:255 | min:3',
+            'body' => 'required',
+            'status' => 'required | boolean'
+
+        ]);
+
+        dd('form submitted!');
     }
 
     /**
