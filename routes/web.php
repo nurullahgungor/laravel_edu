@@ -3,7 +3,7 @@
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ProfileController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -78,6 +78,8 @@ Route::group(['as' => 'animals.', 'prefix' => 'animals'], function(){
     })->name('dog');
 });
 
+
+Route::resource('blog', BlogController::class);
 /**
  * contact için yazdığımız [] dizin parametresi içerisindeki, ilk değer çağırmak istediğimiz controller, ikinci parametre ise
  * bu controller içerisinde çağırmak istediğimiz fonksiyonu işaretler ve çağırır.
@@ -88,6 +90,15 @@ Route::get('master-layout', function(){
     return view('layouts.master');
 })->name('master');
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 
-Route::resource('blog', BlogController::class);
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
