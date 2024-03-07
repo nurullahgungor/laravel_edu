@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Models\User;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +20,7 @@ use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 Route::get('about', function(){
     return view('info.about');
 })->name('about');
@@ -29,7 +32,7 @@ Route::get('about', function(){
  * 2. POST
  * ---------------------|
  * |3. PUT              |
- * |                         => basicaly same thing, but patch method using for limited edition to put method.
+ * |                         => basicaly same thing, but patch method using for limited to put method.
  * |4. PATCH            |
  * ---------------------|
  * 5. DELETE
@@ -79,7 +82,7 @@ Route::group(['as' => 'animals.', 'prefix' => 'animals'], function(){
 });
 
 
-Route::resource('blog', BlogController::class);
+Route::resource('blog', BlogController::class)->middleware('auth.check');
 /**
  * contact için yazdığımız [] dizin parametresi içerisindeki, ilk değer çağırmak istediğimiz controller, ikinci parametre ise
  * bu controller içerisinde çağırmak istediğimiz fonksiyonu işaretler ve çağırır.
@@ -91,7 +94,8 @@ Route::get('master-layout', function(){
 })->name('master');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $users = User::paginate(10);
+    return view('dashboard', compact('users'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
@@ -100,5 +104,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
 
 require __DIR__.'/auth.php';
