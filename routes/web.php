@@ -5,6 +5,8 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Models\User;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -92,7 +94,8 @@ Route::get('master-layout', function(){
 })->name('master');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $users = User::paginate(10);
+    return view('dashboard', compact('users'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 

@@ -73,4 +73,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
     Route::post('logout', [AdminController::class, 'destroy'])
             ->name('logout');
 
+    Route::get('users/{id}', function ($id) {
+
+    });
 });
