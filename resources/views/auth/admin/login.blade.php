@@ -2,11 +2,14 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
+
+
     <form method="POST" action="{{ route('admin.login') }}">
+        <h1><b>Admin Login</b></h1><br>
+
 
         @csrf
         <!-- Email Address -->
-        <h1><b>Admin Login</b></h1><br>
         <div>
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
@@ -32,6 +35,10 @@
                 <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
             </label>
         </div>
+
+        @if (session()->has('error'))
+                <br><span class="text-sm text-red-600 dark:text-red-400 space-y-1">{{ session()->get('error') }}</span>
+        @endif
 
         <div class="flex items-center justify-end mt-4">
             @if (Route::has('password.request'))

@@ -62,7 +62,15 @@ Route::middleware('auth')->group(function () {
 
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
-    Route::get('/', [AdminController::class, 'index'])->name('index'); //admin.login
-    Route::post('login', [AdminController::class, 'login'])->name('login');
-    Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    Route::get('/', [AdminController::class, 'index'])
+            ->name('login.index'); //admin.login
+    Route::post('login', [AdminController::class, 'login'])
+            ->name('login');
+    Route::get('dashboard', [AdminController::class, 'dashboard'])
+            ->name('dashboard')
+            ->middleware('admin');
+
+    Route::post('logout', [AdminController::class, 'destroy'])
+            ->name('logout');
+
 });
